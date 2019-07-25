@@ -33,18 +33,14 @@ Implementation Notes
 
 **Hardware:**
 
-.. todo:: Add links to any specific hardware product page(s), or category page(s). Use unordered list & hyperlink rST
-   inline format: "* `Link Text <url>`_"
+* 3.12" Newhaven Display 256x64 Grayscale Blue OLED:
+    https://www.newhavendisplay.com/nhd31225664ucb2-p-3622.html
 
 **Software and Dependencies:**
 
-* Adafruit CircuitPython firmware for the supported boards:
+* Adafruit CircuitPython 5+ firmware for the supported boards:
   https://github.com/adafruit/circuitpython/releases
 
-.. todo:: Uncomment or remove the Bus Device and/or the Register library dependencies based on the library's use of either.
-
-# * Adafruit's Bus Device library: https://github.com/adafruit/Adafruit_CircuitPython_BusDevice
-# * Adafruit's Register library: https://github.com/adafruit/Adafruit_CircuitPython_Register
 """
 
 import displayio
@@ -73,7 +69,8 @@ _INIT_SEQUENCE = (
     b"\xb8\x0f\x00\x01\x02\x03\x04\x05\x06\x07\x08\x10\x40\x90\xa0\xb0\xb4"  # Set graytable
     # b"\xb9\x00" # Set_Linear_Gray_Scale_Table();//set default linear gray scale table
     b"\xb1\x01\xe2" # Set_Phase_Length(0xE2);// Set Phase 1 as 5 Clocks & Phase 2 as 14 Clocks
-    b"\xd1\x02\xa2\x20" # Set_Display_Enhancement_B(0x20);// Enhance Driving Scheme Capability (0x00/0x20)
+    # Set_Display_Enhancement_B(0x20);// Enhance Driving Scheme Capability (0x00/0x20)
+    b"\xd1\x02\xa2\x20"
     b"\xbb\x01\x1f" # Set_Precharge_Voltage(0x1F);// Set Pre-Charge Voltage Level as 0.60*VCC
     b"\xb6\x01\x08" # Set_Precharge_Period(0x08);// Set Second Pre-Charge Period as 8 Clocks
     b"\xbe\x01\x07" # Set_VCOMH(0x07);// Set Common Pins Deselect Voltage Level as 0.86*VCC
@@ -95,4 +92,4 @@ class SSD1322(displayio.Display):
         super().__init__(bus, _INIT_SEQUENCE, **kwargs, color_depth=4, grayscale=True,
                          set_column_command=0x15, set_row_command=0x75,
                          set_vertical_scroll=0xd3, write_ram_command=0x5c,
-                         single_byte_bounds=True)
+                         single_byte_bounds=True, reverse_pixels_in_byte=True, bytes_per_cell=2)

@@ -9,8 +9,8 @@ Introduction
     :target: https://discord.gg/nBQh6qu
     :alt: Discord
 
-.. image:: https://travis-ci.com/adafruit/Adafruit_CircuitPython_SSD1322.svg?branch=master
-    :target: https://travis-ci.com/adafruit/Adafruit_CircuitPython_SSD1322
+.. image:: https://github.com/adafruit/Adafruit_CircuitPython_SSD1322/workflows/Build%20CI/badge.svg
+    :target: https://github.com/adafruit/Adafruit_CircuitPython_SSD1322/actions/
     :alt: Build Status
 
 DisplayIO driver for grayscale OLEDs driven by SSD1322

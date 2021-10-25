@@ -75,6 +75,11 @@ Usage Example
     time.sleep(1)
     display = adafruit_ssd1322.SSD1322(display_bus, width=256, height=64, colstart=28)
 
+Documentation
+=============
+
+API documentation for this library can be found on `Read the Docs <https://circuitpython.readthedocs.io/projects/ssd1322/en/latest/>`_.
+
 Contributing
 ============
 

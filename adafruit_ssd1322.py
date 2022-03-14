@@ -93,3 +93,31 @@ class SSD1322(displayio.Display):
             reverse_pixels_in_byte=True,
             bytes_per_cell=2,
         )
+        self._is_awake = True  # Display starts in active state (_INIT_SEQUENCE)
+
+    @property
+    def is_awake(self):
+        """
+        The power state of the display. (read-only)
+        `True` if the display is active, `False` if in sleep mode.
+        :type: bool
+        """
+        return self._is_awake
+
+    def sleep(self):
+        """
+        Put display into sleep mode.
+        Display uses < 10uA in sleep mode. Display remembers display data and operation mode
+        active prior to sleeping. MP can access (update) the built-in display RAM.
+        """
+        if self._is_awake:
+            self.bus.send(int(0xAE), "")  # 0xAE = display off, sleep mode
+            self._is_awake = False
+
+    def wake(self):
+        """
+        Wake display from sleep mode
+        """
+        if not self._is_awake:
+            self.bus.send(int(0xAF), "")  # 0xAF = display on
+            self._is_awake = True

@@ -62,6 +62,7 @@ _INIT_SEQUENCE = (
     b"\xaf\x00"  # Set_Display_On_Off(0x01);
 )
 
+
 # pylint: disable=too-few-public-methods
 class SSD1322(displayio.Display):
     """

@@ -43,6 +43,6 @@ for i in range(color_count):
 
 g.append(t)
 
-display.show(g)
+display.root_group = g
 
 time.sleep(10)

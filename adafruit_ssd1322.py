@@ -26,7 +26,8 @@ Implementation Notes
 
 """
 
-import displayio
+from busdisplay import BusDisplay
+from fourwire import FourWire
 
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_SSD1322.git"
@@ -64,7 +65,7 @@ _INIT_SEQUENCE = (
 
 
 # pylint: disable=too-few-public-methods
-class SSD1322(displayio.Display):
+class SSD1322(BusDisplay):
     """
     SSD1322 driver
 
@@ -74,7 +75,7 @@ class SSD1322(displayio.Display):
         (0, 90, 180, 270)
     """
 
-    def __init__(self, bus: displayio.FourWire, **kwargs) -> None:
+    def __init__(self, bus: FourWire, **kwargs) -> None:
         # Patch the init sequence for 32 pixel high displays.
         init_sequence = bytearray(_INIT_SEQUENCE)
         height = kwargs["height"]

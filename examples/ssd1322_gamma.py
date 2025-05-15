@@ -2,9 +2,11 @@
 # SPDX-License-Identifier: MIT
 
 import time
+
 import board
 import busio
 import displayio
+
 import adafruit_ssd1322
 
 displayio.release_displays()

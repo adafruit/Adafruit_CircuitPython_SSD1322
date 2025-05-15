@@ -63,7 +63,6 @@ _INIT_SEQUENCE = (
 )
 
 
-# pylint: disable=too-few-public-methods
 class SSD1322(displayio.Display):
     """
     SSD1322 driver

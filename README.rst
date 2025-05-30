@@ -64,6 +64,7 @@ Usage Example
     import board
     import busio
     import displayio
+    import fourwire
     import adafruit_ssd1322
 
     displayio.release_displays()
@@ -74,7 +75,7 @@ Usage Example
     tft_dc = board.D9
     tft_reset = board.D5
 
-    display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs,
+    display_bus = fourwire.FourWire(spi, command=tft_dc, chip_select=tft_cs,
                                      reset=tft_reset, baudrate=1000000)
     time.sleep(1)
     display = adafruit_ssd1322.SSD1322(display_bus, width=256, height=64, colstart=28)

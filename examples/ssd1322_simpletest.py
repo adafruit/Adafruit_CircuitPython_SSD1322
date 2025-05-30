@@ -6,6 +6,7 @@ import time
 import board
 import busio
 import displayio
+import fourwire
 
 import adafruit_ssd1322
 
@@ -17,7 +18,7 @@ tft_cs = board.D6
 tft_dc = board.D9
 tft_reset = board.D5
 
-display_bus = displayio.FourWire(
+display_bus = fourwire.FourWire(
     spi, command=tft_dc, chip_select=tft_cs, reset=tft_reset, baudrate=1000000
 )
 time.sleep(1)
